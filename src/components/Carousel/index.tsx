@@ -73,7 +73,7 @@ export const data = [
       },
       {
         name: 'Mara',
-        description: 'O menino elétrico',
+        description: 'A menina elétrica',
         image: '/characters/action/mara.png',
       },
       {
