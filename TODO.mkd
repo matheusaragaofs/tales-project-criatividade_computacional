@@ -1,0 +1,7 @@
+# Criar hover neon em cada poster [OK]
+
+# Trocar o Scroll para o card slider  [OK]
+ 
+# Colocar o banner slider 
+
+# Criar a página do filme com as informações
