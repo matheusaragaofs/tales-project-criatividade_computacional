@@ -96,7 +96,7 @@ export default function Carousel() {
     <Container>
       <div className="header-title">
         <div className="ht">Audiobooks Imersivos</div>
-        <div className="hd"> Mergulhe em Histórias como Nunca Antes</div>
+        <div className="hd"> Mergulhe em histórias como nunca antes...</div>
       </div>
 
       <Swiper
