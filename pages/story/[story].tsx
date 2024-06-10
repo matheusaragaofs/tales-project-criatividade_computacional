@@ -11,14 +11,18 @@ import {
 import { storiesBackgrounds360Urls } from '../../config/storiesBackgrounds360Urls';
 import { storiesData } from '../../config/storiesData';
 type storyType = 'horror' | 'fantasy' | 'action';
-
+import useWindowOrientation from 'use-window-orientation';
+import { useMediaQuery } from 'react-responsive';
 const StoryPage: React.FC = () => {
   const router = useRouter();
+
+  const { landscape, orientation } = useWindowOrientation();
+
   const { story } = router.query;
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   const audioNarrationRef = useRef<HTMLAudioElement | null>(null);
   const audioBacksoundRef = useRef<HTMLAudioElement | null>(null);
   const [isMuted, setIsMuted] = useState(false);
-
   const [storyPart, setStoryPart] = useState<number>(0);
 
   const pages = Object.keys(storiesBackgrounds360Urls['horror']).map((key) =>
@@ -63,6 +67,25 @@ const StoryPage: React.FC = () => {
 
   return (
     <div style={{ width: '100%', height: '100vh', position: 'relative' }}>
+      {isMobile && !landscape && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0,0,0,0.8)',
+            color: 'white',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: 9999,
+          }}
+        >
+          Vire o seu celular para uma melhor experiência!
+        </div>
+      )}
       <audio
         ref={audioNarrationRef}
         src={`/audios/${story}/narration/${storyPart}.mp3`}
@@ -75,10 +98,10 @@ const StoryPage: React.FC = () => {
       <div
         style={{
           position: 'absolute',
-          bottom: 30,
+          bottom: isMobile || landscape ? 20 : 30,
           left: 30,
           zIndex: 1,
-          fontSize: 20,
+          fontSize: isMobile || landscape ? 14 : 20,
           fontWeight: 'normal',
           padding: 10,
           borderRadius: 5,
@@ -101,7 +124,7 @@ const StoryPage: React.FC = () => {
               fontSize: 50,
               cursor: 'pointer',
             }}
-            size={80}
+            size={isMobile || landscape ? 40 : 80}
           />
         </a>
       </Link>
@@ -113,24 +136,35 @@ const StoryPage: React.FC = () => {
         }}
         style={{
           position: 'absolute',
-          top: 200,
+          top: isMobile || landscape ? 130 : 200,
           left: 30,
           zIndex: 1,
           cursor: 'pointer',
         }}
-        size={80}
+        size={isMobile || landscape ? 40 : 80}
       />
       <div
         onClick={() => {
           handleAudioAction('mute', audioNarrationRef);
           handleAudioAction('mute', audioBacksoundRef);
         }}
-        style={{ position: 'absolute', top: 350, left: 30, zIndex: 1 }}
+        style={{
+          position: 'absolute',
+          top: isMobile || landscape ? 220 : 350,
+          left: 30,
+          zIndex: 1,
+        }}
       >
         {isMuted ? (
-          <FaVolumeMute className="hovered-button" size={80} />
+          <FaVolumeMute
+            className="hovered-button"
+            size={isMobile || landscape ? 40 : 80}
+          />
         ) : (
-          <FaVolumeUp className="hovered-button" size={80} />
+          <FaVolumeUp
+            className="hovered-button"
+            size={isMobile || landscape ? 40 : 80}
+          />
         )}
       </div>
       <div
@@ -168,7 +202,7 @@ const StoryPage: React.FC = () => {
                     ? 100
                     : 0,
                 }}
-                size={80}
+                size={isMobile || landscape ? 40 : 80}
                 onClick={handlePreviousPage}
               />
             )}
@@ -176,32 +210,32 @@ const StoryPage: React.FC = () => {
               <FaArrowRight
                 className="hovered-button"
                 onClick={handleNextPage}
-                size={80}
+                size={isMobile || landscape ? 40 : 80}
               />
             )}
           </div>
         </div>
       </div>
       Story: {story}
-      {story && storyPart !== undefined && 
-      <iframe
-      style={{
-          width: '100%',
-          height: '100%',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-        }}
-        width="100%"
-        height="640"
-        allow="xr-spatial-tracking; gyroscope; accelerometer"
-        src={
-          storiesBackgrounds360Urls[story as storyType][
-              String(storyPart) as never 
+      {story && storyPart !== undefined && (
+        <iframe
+          style={{
+            width: '100%',
+            height: '100%',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+          }}
+          width="100%"
+          height="640"
+          allow="xr-spatial-tracking; gyroscope; accelerometer"
+          src={
+            storiesBackgrounds360Urls[story as storyType][
+              String(storyPart) as never
             ]
-        }
+          }
         ></iframe>
-    }
+      )}
     </div>
   );
 };

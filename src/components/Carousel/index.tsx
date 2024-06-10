@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import Image from 'next/image';
 
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
@@ -80,8 +81,9 @@ export default function Carousel() {
 
       <div className="characters-list">
         {currentTale?.characters?.map(({ name, description, image }, index) => (
-          <div className="characters">
-            <img width={100} height={100} src={image} alt={name} />
+          <div key={name} className="characters">
+            {/* <img width={100} height={100} src={image} alt={name} /> */}
+            <Image width={100} height={100} src={image} alt={name} />
             <div>
               <div>{name}</div>
               <div
