@@ -7,83 +7,8 @@ import 'swiper/css/pagination';
 import { Container } from './styles';
 
 import { EffectCoverflow, Pagination } from 'swiper';
-export const data = [
-  {
-    cover: '/characters/fantasy/poster.png',
-    title: 'A Busca do Trio Encantado',
-    gender: 'Fantasia',
-    parentalRating: 0,
-    description:
-      'Três amigos improváveis aventuram-se na mística floresta de Eldoria em busca do Coração de Eldoria, uma joia mágica que pode trazer prosperidade ao reino de Aeronvale. Juntos, enfrentam desafios sobrenaturais, provando sua coragem, sabedoria e unidade',
-    characters: [
-      {
-        name: 'Aric',
-        description: 'O mago sábio',
-        image: '/characters/fantasy/aric.png',
-      },
-      {
-        name: 'Lyra',
-        description: 'A arqueira ágil',
-        image: '/characters/fantasy/lyra.png',
-      },
-      {
-        name: 'Gareth',
-        description: 'O cavaleiro valente',
-        image: '/characters/fantasy/gareth.png',
-      },
-    ],
-  },
-  {
-    cover: '/characters/horror/poster.png',
-    title: ' A Assombração da Mansão Blackwood',
-    gender: 'Terror',
-    parentalRating: 18,
-    description:
-      'Três amigos exploram a assombrada Mansão Blackwood, enfrentando fenômenos sobrenaturais e descobrindo a trágica história da família que ali viveu. Com coragem e união, realizam um ritual para libertar os espíritos presos, transformando a atmosfera sinistra em calma e paz.',
-    characters: [
-      {
-        name: 'Emma',
-        description: 'A líder',
-        image: '/characters/horror/emma.png',
-      },
-      {
-        name: 'Alex',
-        description: 'O cético',
-        image: '/characters/horror/alex.png',
-      },
-      {
-        name: 'Lily',
-        description: 'A sensisitva',
-        image: '/characters/horror/lily.png',
-      },
-    ],
-  },
-  {
-    cover: '/characters/action/poster.png',
-    title: 'A Última Resistência em Ember Ridge',
-    gender: 'Ação',
-    parentalRating: 16,
-    description:
-      'Três amigos com poderes únicos defendem Ember Ridge em meio a uma batalha devastadora. Elias cura feridos, Mara controla a eletricidade e Ryan usa supervelocidade para superar o inimigo. Juntos, enfrentam o caos e o perigo, tornando-se lendas de coragem e amizade.',
-    characters: [
-      {
-        name: 'Elias',
-        description: 'O curandeiro',
-        image: '/characters/action/elias.png',
-      },
-      {
-        name: 'Mara',
-        description: 'A menina elétrica',
-        image: '/characters/action/mara.png',
-      },
-      {
-        name: 'Ryan',
-        description: 'O lépido',
-        image: '/characters/action/ryan.png',
-      },
-    ],
-  },
-];
+import Link from 'next/link';
+import { storiesData } from '../../../config/storiesData';
 
 const parentalRatingColors = {
   0: '#20af2c',
@@ -91,7 +16,7 @@ const parentalRatingColors = {
   18: '#383737',
 };
 export default function Carousel() {
-  const [currentTale, setCurrentTale] = useState(data[0]);
+  const [currentTale, setCurrentTale] = useState(storiesData[0]);
   return (
     <Container>
       <div className="header-title">
@@ -105,7 +30,7 @@ export default function Carousel() {
         slideToClickedSlide={true}
         fadeEffect={{ crossFade: true }}
         onSlideChange={(swiper) => {
-          setCurrentTale(data[swiper.activeIndex]);
+          setCurrentTale(storiesData[swiper.activeIndex]);
         }}
         centeredSlides={true}
         slidesPerView={'auto'}
@@ -121,7 +46,7 @@ export default function Carousel() {
         modules={[EffectCoverflow, Pagination]}
         className="mySwiper"
       >
-        {data.map((item, index) => {
+        {storiesData.map((item, index) => {
           return (
             <SwiperSlide key={index}>
               <div className="header">{item.gender || `${index}`}</div>
@@ -146,9 +71,11 @@ export default function Carousel() {
           );
         })}
       </Swiper>
-      <a target="_blank" href="https://www.youtube.com/watch?v=VVHJk35NHBs">
-        <div className="go-to-history-btn">Ir para história</div>
-      </a>
+      {currentTale.story === 'horror' && (
+        <Link href={`/story/${currentTale.story}`}>
+          <div className="go-to-history-btn">Ir para história</div>
+        </Link>
+      )}
       <div className="description">{currentTale.description}</div>
 
       <div className="characters-list">

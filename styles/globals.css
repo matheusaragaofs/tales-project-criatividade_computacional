@@ -4,8 +4,8 @@ body {
   background: rgba(13, 0, 28, 0.833);
   padding: 0;
   margin: 0;
-  font-family: Poppins, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Poppins, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
@@ -24,5 +24,13 @@ a {
   body {
     color: white;
     background: rgba(13, 0, 28, 0.833);
+  }
+}
+
+.hovered-button {
+  cursor: pointer;
+  &:hover {
+    color: #ff4eb2;
+    transition: 0.5s;
   }
 }
