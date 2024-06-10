@@ -183,8 +183,9 @@ const StoryPage: React.FC = () => {
         </div>
       </div>
       Story: {story}
+      {story && storyPart !== undefined && 
       <iframe
-        style={{
+      style={{
           width: '100%',
           height: '100%',
           position: 'absolute',
@@ -196,10 +197,11 @@ const StoryPage: React.FC = () => {
         allow="xr-spatial-tracking; gyroscope; accelerometer"
         src={
           storiesBackgrounds360Urls[story as storyType][
-            String(storyPart) as never
-          ]
+              String(storyPart) as never 
+            ]
         }
-      ></iframe>
+        ></iframe>
+    }
     </div>
   );
 };

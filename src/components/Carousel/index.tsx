@@ -26,7 +26,7 @@ export default function Carousel() {
 
       <Swiper
         effect={'coverflow'}
-        grabCursor={false}
+        grabCursor={true}
         slideToClickedSlide={true}
         fadeEffect={{ crossFade: true }}
         onSlideChange={(swiper) => {
