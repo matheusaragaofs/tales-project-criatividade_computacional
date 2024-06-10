@@ -10,6 +10,7 @@ export const THEME = {
         XSM:12,
         SM: 14,
         MD: 16,
-        LG: 24
+        LG: 24,
+        XLG:32
     }
 };
