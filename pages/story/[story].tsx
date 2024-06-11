@@ -8,6 +8,8 @@ import {
   FaVolumeMute,
   FaVolumeUp,
 } from 'react-icons/fa';
+import { CgSmileMouthOpen, CgSmileNoMouth } from 'react-icons/cg';
+
 import { storiesBackgrounds360Urls } from '../../config/storiesBackgrounds360Urls';
 import { storiesData } from '../../config/storiesData';
 type storyType = 'horror' | 'fantasy' | 'action';
@@ -22,7 +24,8 @@ const StoryPage: React.FC = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   const audioNarrationRef = useRef<HTMLAudioElement | null>(null);
   const audioBacksoundRef = useRef<HTMLAudioElement | null>(null);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isNarrationMuted, setIsNarrationMuted] = useState(false);
+  const [isBacksoundMuted, setIsBacksoundMuted] = useState(false);
   const [storyPart, setStoryPart] = useState<number>(0);
 
   const pages = Object.keys(
@@ -41,7 +44,8 @@ const StoryPage: React.FC = () => {
 
   const handleAudioAction = (
     action: 'play' | 'mute',
-    audioRef: React.RefObject<HTMLAudioElement>
+    audioRef: React.RefObject<HTMLAudioElement>,
+    type: 'narration' | 'backsound'
   ) => {
     if (audioRef.current) {
       if (action === 'play') {
@@ -49,7 +53,12 @@ const StoryPage: React.FC = () => {
         audioRef.current.play();
       } else if (action === 'mute') {
         audioRef.current.muted = !audioRef.current.muted;
-        setIsMuted(audioRef.current.muted);
+        if (type === 'narration') {
+          setIsNarrationMuted(audioRef.current.muted);
+        }
+        if (type === 'backsound') {
+          setIsBacksoundMuted(audioRef.current.muted);
+        }
       }
     }
   };
@@ -134,8 +143,8 @@ const StoryPage: React.FC = () => {
       <FaRedoAlt
         className="hovered-button"
         onClick={() => {
-          handleAudioAction('play', audioNarrationRef);
-          handleAudioAction('play', audioBacksoundRef);
+          handleAudioAction('play', audioNarrationRef, 'narration');
+          handleAudioAction('play', audioBacksoundRef, 'backsound');
         }}
         style={{
           position: 'absolute',
@@ -148,8 +157,7 @@ const StoryPage: React.FC = () => {
       />
       <div
         onClick={() => {
-          handleAudioAction('mute', audioNarrationRef);
-          handleAudioAction('mute', audioBacksoundRef);
+          handleAudioAction('mute', audioNarrationRef, 'narration');
         }}
         style={{
           position: 'absolute',
@@ -158,7 +166,30 @@ const StoryPage: React.FC = () => {
           zIndex: 1,
         }}
       >
-        {isMuted ? (
+        {isNarrationMuted ? (
+          <CgSmileNoMouth
+            className="hovered-button"
+            size={isMobile || landscape ? 40 : 80}
+          />
+        ) : (
+          <CgSmileMouthOpen
+            className="hovered-button"
+            size={isMobile || landscape ? 40 : 80}
+          />
+        )}
+      </div>
+      <div
+        onClick={() => {
+          handleAudioAction('mute', audioBacksoundRef, 'backsound');
+        }}
+        style={{
+          position: 'absolute',
+          top: isMobile || landscape ? 290 : 500,
+          left: 30,
+          zIndex: 1,
+        }}
+      >
+        {isBacksoundMuted ? (
           <FaVolumeMute
             className="hovered-button"
             size={isMobile || landscape ? 40 : 80}
