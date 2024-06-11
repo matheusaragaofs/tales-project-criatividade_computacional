@@ -25,9 +25,9 @@ const StoryPage: React.FC = () => {
   const [isMuted, setIsMuted] = useState(false);
   const [storyPart, setStoryPart] = useState<number>(0);
 
-  const pages = Object.keys(storiesBackgrounds360Urls[story as storyType]).map(
-    (key) => Number(key)
-  );
+  const pages = Object.keys(
+    storiesBackgrounds360Urls[(story as storyType) || 'fantasy']
+  ).map((key) => Number(key));
   const firstPage = Math.min(...pages);
   const lastPage = Math.max(...pages);
 
