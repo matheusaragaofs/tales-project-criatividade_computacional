@@ -148,7 +148,7 @@ const StoryPage: React.FC = () => {
         }}
         style={{
           position: 'absolute',
-          top: isMobile || landscape ? 130 : 200,
+          top: isMobile || landscape ? 120 : 200,
           left: 30,
           zIndex: 1,
           cursor: 'pointer',
@@ -161,7 +161,7 @@ const StoryPage: React.FC = () => {
         }}
         style={{
           position: 'absolute',
-          top: isMobile || landscape ? 220 : 350,
+          top: isMobile || landscape ? 190 : 350,
           left: 30,
           zIndex: 1,
         }}
@@ -184,7 +184,7 @@ const StoryPage: React.FC = () => {
         }}
         style={{
           position: 'absolute',
-          top: isMobile || landscape ? 290 : 500,
+          top: isMobile || landscape ? 250 : 490,
           left: 30,
           zIndex: 1,
         }}
