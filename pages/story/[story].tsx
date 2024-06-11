@@ -28,6 +28,7 @@ const StoryPage: React.FC = () => {
   const pages = Object.keys(
     storiesBackgrounds360Urls[(story as storyType) || 'fantasy']
   ).map((key) => Number(key));
+
   const firstPage = Math.min(...pages);
   const lastPage = Math.max(...pages);
 
@@ -79,6 +80,7 @@ const StoryPage: React.FC = () => {
             backgroundColor: 'rgba(0,0,0,0.8)',
             color: 'white',
             display: 'flex',
+            textAlign: 'center',
             justifyContent: 'center',
             alignItems: 'center',
             zIndex: 9999,
