@@ -8,7 +8,7 @@
 
 Antes de começar, certifique-se de ter as seguintes ferramentas instaladas:
 
-- [Node.js](https://nodejs.org/) (versão 12 ou superior)
+- [Node.js](https://nodejs.org/) (versão 18 ou superior)
 - [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/)
 
 ## Instalação
