@@ -61,7 +61,7 @@ const StoryPage: React.FC = () => {
     }
 
     if (audioBacksoundRef.current) {
-      audioBacksoundRef.current.volume = 0.1;
+      audioBacksoundRef.current.volume = 0.035;
       audioBacksoundRef.current.play();
     }
   }, [storyPart]);
