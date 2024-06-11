@@ -153,7 +153,6 @@ export const Container = styled.div`
     display: flex;
     margin: 5px 5px 0 0;
     position: absolute;
-    /* transform: translate(-30px,-30px); */
     top: 0;
     right: 0;
     justify-content: center;
