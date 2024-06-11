@@ -16,7 +16,7 @@ import { useMediaQuery } from 'react-responsive';
 const StoryPage: React.FC = () => {
   const router = useRouter();
 
-  const { landscape, orientation } = useWindowOrientation();
+  const { landscape } = useWindowOrientation();
 
   const { story } = router.query;
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
@@ -25,8 +25,8 @@ const StoryPage: React.FC = () => {
   const [isMuted, setIsMuted] = useState(false);
   const [storyPart, setStoryPart] = useState<number>(0);
 
-  const pages = Object.keys(storiesBackgrounds360Urls['horror']).map((key) =>
-    Number(key)
+  const pages = Object.keys(storiesBackgrounds360Urls[story as storyType]).map(
+    (key) => Number(key)
   );
   const firstPage = Math.min(...pages);
   const lastPage = Math.max(...pages);
@@ -74,6 +74,7 @@ const StoryPage: React.FC = () => {
             top: 0,
             left: 0,
             width: '100%',
+            padding: 10,
             height: '100%',
             backgroundColor: 'rgba(0,0,0,0.8)',
             color: 'white',
@@ -212,6 +213,23 @@ const StoryPage: React.FC = () => {
                 onClick={handleNextPage}
                 size={isMobile || landscape ? 40 : 80}
               />
+            )}
+            {storyPart === lastPage && (
+              <div
+                style={{
+                  marginLeft: 30,
+                  fontSize: 20,
+                  fontWeight: 'bold',
+                  borderRadius: 5,
+                  textAlign: 'center',
+                  backgroundColor: 'rgba(118, 112, 116, 0.5)',
+                  color: 'white',
+                  textShadow: '0 0 2px #8d898b',
+                  padding: 10,
+                }}
+              >
+                Fim da história
+              </div>
             )}
           </div>
         </div>

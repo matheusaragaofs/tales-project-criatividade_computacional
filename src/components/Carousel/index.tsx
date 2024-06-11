@@ -72,7 +72,7 @@ export default function Carousel() {
           );
         })}
       </Swiper>
-      {currentTale.story === 'horror' && (
+      {['horror', 'fantasy'].includes(currentTale.story) && (
         <Link href={`/story/${currentTale.story}`}>
           <div className="go-to-history-btn">Ir para história</div>
         </Link>
