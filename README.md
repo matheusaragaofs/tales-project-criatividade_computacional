@@ -2,6 +2,7 @@
 
 ## Mergulhe em histórias como nunca antes...
 
+![Homepage](public/home.png)
 
 ## Requisitos
 
