@@ -16,7 +16,8 @@ Antes de começar, certifique-se de ter as seguintes ferramentas instaladas:
 1. Clone o repositório:
 
     ```bash
-    git clone https://github.com/seu-usuario/tales-project-criatividade_computacional.git
+   
+    git clone https://github.com/matheusaragaofs/tales-project-criatividade_computacional.git
     
     ```
 
