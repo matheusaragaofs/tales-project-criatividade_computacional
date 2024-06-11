@@ -1,34 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Audiobooks Imersivos
 
-## Getting Started
+## Mergulhe em histórias como nunca antes...
 
-First, run the development server:
+![Homepage](public/home.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Requisitos
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Antes de começar, certifique-se de ter as seguintes ferramentas instaladas:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- [Node.js](https://nodejs.org/) (versão 12 ou superior)
+- [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Instalação
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+1. Clone o repositório:
 
-## Learn More
+    ```bash
+    git clone https://github.com/seu-usuario/tales-project-criatividade_computacional.git
+    
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+2. Navegue até o diretório do projeto:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    ```bash
+    cd tales-project-criatividade_computacional
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+3. Instale as dependências:
 
-## Deploy on Vercel
+    ```bash
+    npm install
+    # ou
+    yarn install
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Iniciando o servidor de desenvolvimento
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Para iniciar o servidor de desenvolvimento, execute o seguinte comando:
+
+    npm run dev
+    # ou
+    yarn dev
+
+Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o resultado.
+
